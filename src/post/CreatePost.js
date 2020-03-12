@@ -13,8 +13,7 @@ export default function CreatePost({ user, posts, dispatch }) {
   }
 
   function handleCreate() {
-    const newPost = { title, content, author: user }
-    dispatch({ type: CREATE_POST, title, content, author: user })
+    dispatch({ type: 'CREATE_POST', title, content, author: user })
   }
 
   return (
