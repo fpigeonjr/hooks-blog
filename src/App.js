@@ -3,6 +3,18 @@ import UserBar from './user/UserBar'
 import PostList from './post/PostList'
 import CreatePost from './post/CreatePost'
 
+function userReducer(state, action) {
+  switch (action.type) {
+    case 'LOGIN':
+    case 'REGISTER':
+      return action.username
+    case 'LOGOUT':
+      return ''
+    default:
+      throw new Error()
+  }
+}
+
 export default function App() {
   const defaultPosts = [
     {
