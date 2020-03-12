@@ -38,14 +38,15 @@ export default function App() {
       author: 'Frank Pigeon'
     }
   ]
-  const [posts, setPosts] = useState(defaultPosts)
+
   const [user, dispatchUser] = useReducer(userReducer, '')
-  // const [user, setUser] = useState('')
+  const [posts, dispatchPosts] = useReducer(postsReducer, defaultPosts)
+
   return (
     <div style={{ padding: 8 }}>
       <UserBar user={user} dispatch={dispatchUser} />
       <br />
-      {user && <CreatePost user={user} posts={posts} setPosts={setPosts} />}
+      {user && <CreatePost user={user} posts={posts} dispatch={dispatchPosts} />}
       <br />
       <hr />
       <PostList posts={posts} />
