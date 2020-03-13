@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useReducer } from 'react'
 
 function userReducer(state, action) {
   switch (action.type) {
@@ -8,7 +8,7 @@ function userReducer(state, action) {
     case 'LOGOUT':
       return ''
     default:
-      throw new Error()
+      return state
   }
 }
 
@@ -18,11 +18,13 @@ function postsReducer(state, action) {
       const newPost = { title: action.title, content: action.content, author: action.author }
       return [newPost, ...state]
     default:
-      throw new Error()
+      return state
   }
 }
 
-export default appReducer (state, action){
-  user: userReducer(state.user, action),
-  posts: postsReducer(state.posts, action)
+export default function appReducer(state, action) {
+  return {
+    user: userReducer(state.user, action),
+    posts: postsReducer(state.posts, action)
+  }
 }
