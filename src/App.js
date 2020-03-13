@@ -3,6 +3,9 @@ import UserBar from './user/UserBar'
 import PostList from './post/PostList'
 import CreatePost from './post/CreatePost'
 import appReducer from './reducers'
+import Header from './Header'
+
+export const ThemeContext = React.createContext({ primaryColor: 'deepskyblue' })
 
 export default function App() {
   const defaultPosts = [
@@ -30,13 +33,16 @@ export default function App() {
   }, [user])
 
   return (
-    <div style={{ padding: 8 }}>
-      <UserBar user={user} dispatch={dispatch} />
-      <br />
-      {user && <CreatePost user={user} posts={posts} dispatch={dispatch} />}
-      <br />
-      <hr />
-      <PostList posts={posts} />
-    </div>
+    <>
+      <Header text="Hello World" />
+      <div style={{ padding: 8 }}>
+        <UserBar user={user} dispatch={dispatch} />
+        <br />
+        {user && <CreatePost user={user} posts={posts} dispatch={dispatch} />}
+        <br />
+        <hr />
+        <PostList posts={posts} />
+      </div>
+    </>
   )
 }
