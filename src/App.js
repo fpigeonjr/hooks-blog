@@ -34,7 +34,9 @@ export default function App() {
 
   return (
     <>
-      <Header text="Hello World" />
+      <ThemeContext.Provider value={{ primaryColor: 'coral' }}>
+        <Header text="Hello World" />
+      </ThemeContext.Provider>
       <div style={{ padding: 8 }}>
         <UserBar user={user} dispatch={dispatch} />
         <br />
